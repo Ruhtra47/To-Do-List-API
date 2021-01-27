@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const accounts = require('./accounts.json');
 
-app.put('https://to-do-list-app-api.herokuapp.com//add/:username/:password', (req, res) => {
+app.put('https://to-do-list-app-api.herokuapp.com/add/:username/:password', (req, res) => {
     const username = req.params.username;
     const password = req.params.password;
     const account = { username: username, password: password };
@@ -15,7 +15,7 @@ app.put('https://to-do-list-app-api.herokuapp.com//add/:username/:password', (re
     res.send(accounts);
 });
 
-app.get('https://to-do-list-app-api.herokuapp.com//get/:username/:password', (req, res) => {
+app.get('https://to-do-list-app-api.herokuapp.com/get/:username/:password', (req, res) => {
     const account = accounts.find(c => c.username === req.params.username && c.password === req.params.password);
     if (!account) return res.status(404).send('The account with the given usernmae/password was not found.')
     res.send(account);
